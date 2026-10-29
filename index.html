@@ -4,127 +4,165 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Desmond McDonagh Goto</title>
+<script>document.documentElement.className='js'</script>
 <style>
-:root{--bg:#faf8f5;--surface:#fff;--text:#1d2330;--muted:#5d6676;--accent:#4b2a7b;--line:#e4e0d8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14161c;--surface:#1c1f27;--text:#eceae5;--muted:#a1a7b3;--accent:#b99af0;--line:#2b2f3a;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#14161c;--surface:#1c1f27;--text:#eceae5;--muted:#a1a7b3;--accent:#b99af0;--line:#2b2f3a;color-scheme:dark}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+:root{--bg:#faf8f5;--surface:#fff;--text:#1d2330;--muted:#5d6676;--accent:#4b2a7b;--accent2:#e9e1f5;--line:#e4e0d8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13151b;--surface:#1b1e26;--text:#eceae5;--muted:#a1a7b3;--accent:#b99af0;--accent2:#2a2340;--line:#2b2f3a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#13151b;--surface:#1b1e26;--text:#eceae5;--muted:#a1a7b3;--accent:#b99af0;--accent2:#2a2340;--line:#2b2f3a;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:17px/1.6 Georgia,"Times New Roman",serif}
-.wrap{max-width:760px;margin:0 auto;padding:48px 22px 72px}
-nav{display:flex;flex-wrap:wrap;gap:18px;font:15px system-ui,-apple-system,Segoe UI,sans-serif;margin-bottom:56px}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.65 Georgia,"Times New Roman",serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+.sans,nav,.btn,.when,.eyebrow,.stat span,.chips li,h2,.grp,footer{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.w{max-width:1080px;margin:0 auto;padding:0 24px}
 a{color:var(--accent);text-underline-offset:3px}
-nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--accent)}
-h1{font-size:2.6rem;line-height:1.15;margin:0 0 10px;letter-spacing:-.01em}
-.tag{font:18px system-ui,-apple-system,sans-serif;color:var(--muted);margin:0 0 22px}
-.lead{font-size:1.1rem}
-h2{font:600 .85rem system-ui,-apple-system,sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin:56px 0 18px;border-bottom:1px solid var(--line);padding-bottom:8px}
-.item{margin-bottom:26px}
-.row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.row b{font-size:1.05rem}
-.when{font:14px system-ui,-apple-system,sans-serif;color:var(--muted)}
-.org{color:var(--muted);margin:0 0 6px}
-ul{margin:6px 0 0;padding-left:20px}li{margin-bottom:5px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin-bottom:16px}
-.card h3{margin:0 0 6px;font-size:1.1rem}
-.card p{margin:0 0 10px;color:var(--muted)}
-.btn{display:inline-block;font:600 15px system-ui,-apple-system,sans-serif;text-decoration:none;background:var(--accent);color:var(--bg);padding:9px 16px;border-radius:8px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none}
-.chips li{font:14px system-ui,-apple-system,sans-serif;border:1px solid var(--line);background:var(--surface);padding:5px 12px;border-radius:99px;margin:0}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
-.stat{border-top:2px solid var(--accent);padding-top:8px}
-.stat b{display:block;font-size:1.9rem;line-height:1.1;color:var(--accent)}
-.stat span{font:13px/1.35 system-ui,-apple-system,sans-serif;color:var(--muted)}
-.grp{font:600 .78rem system-ui,-apple-system,sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:20px 0 8px}
-footer{margin-top:64px;font:14px system-ui,-apple-system,sans-serif;color:var(--muted)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);font-size:15px}
+nav .w{display:flex;justify-content:space-between;align-items:center;height:60px}
+nav b{font-size:16px;letter-spacing:.02em}
+nav div{display:flex;gap:22px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;transition:color .2s}nav a:hover{color:var(--accent)}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center;padding:72px 0 56px}
+.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 16px}
+h1{font-size:clamp(2.4rem,5vw,3.6rem);line-height:1.08;margin:0 0 18px;letter-spacing:-.02em}
+.pitch{font-size:clamp(1.3rem,2.4vw,1.65rem);line-height:1.35;margin:0 0 16px}
+.pitch em{color:var(--accent)}
+.hero p.sub{color:var(--muted);margin:0 0 26px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;font-weight:600;font-size:15px;text-decoration:none;padding:11px 18px;border-radius:9px;border:1px solid var(--accent);transition:transform .2s,box-shadow .2s,background .2s}
+.btn.p{background:var(--accent);color:var(--bg)}.btn.s{color:var(--accent)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px -8px var(--accent)}
+.ph{position:relative;max-width:380px;margin-left:auto}
+.ph::before{content:"";position:absolute;inset:14px -14px -14px 14px;border-radius:18px;background:var(--accent2);z-index:0}
+.ph img{position:relative;z-index:1;display:block;width:100%;border-radius:18px;aspect-ratio:4/5;object-fit:cover;box-shadow:0 20px 40px -24px rgba(0,0,0,.45)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
+.stat{padding:22px 20px;border-right:1px solid var(--line)}.stat:last-child{border:0}
+.stat b{display:block;font-size:2rem;line-height:1.1;color:var(--accent)}
+.stat span{font-size:13px;color:var(--muted);line-height:1.35;display:block;margin-top:4px}
+section{padding-top:80px}
+h2{font-size:.82rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin:0 0 24px;display:flex;align-items:center;gap:14px}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px;transition:transform .25s,box-shadow .25s,border-color .25s}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px -20px rgba(0,0,0,.4);border-color:var(--accent)}
+.card h3{margin:0 0 4px;font-size:1.15rem;line-height:1.3}
+.when{font-size:13px;color:var(--muted);margin:0 0 12px}
+.card ul{margin:0;padding-left:18px}.card li{margin-bottom:6px;font-size:16px}
+.card p{margin:0 0 12px;font-size:16px}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:6px 0 18px}
+.mini b{display:block;font-size:1.6rem;color:var(--accent);line-height:1.1}
+.mini span{font:13px/1.35 system-ui,-apple-system,sans-serif;color:var(--muted)}
+.grp{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.chips li{font-size:13.5px;border:1px solid var(--line);background:var(--bg);padding:4px 12px;border-radius:99px;margin:0}
+.post .t{font-size:1.3rem;line-height:1.3;margin:6px 0 10px}
+.post .t a{color:var(--text);text-decoration:none}.post .t a:hover{color:var(--accent)}
+.beyond{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
+.beyond img{width:100%;border-radius:14px;display:block;box-shadow:0 20px 40px -26px rgba(0,0,0,.5)}
+.cap{font:13px system-ui,-apple-system,sans-serif;color:var(--muted);margin:8px 0 0}
+.fun{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
+.fun .card{padding:20px}.fun h3{font-size:1rem}.fun p{font-size:14.5px;color:var(--muted);margin:0}
+footer{margin-top:90px;padding:28px 0 40px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv{opacity:1;transform:none;transition:none}.btn,.card{transition:none}}
+@media (max-width:860px){.hero,.beyond,.g2{grid-template-columns:1fr}.ph{margin:0 auto 10px;max-width:300px;order:-1}.stats,.fun{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}.hero{padding-top:40px;gap:36px}nav div{gap:14px;font-size:14px}nav b{display:none}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<nav><a href="#about">About</a><a href="#experience">Experience</a><a href="#research">Research</a><a href="#writing">Writing</a><a href="#contact">Contact</a></nav>
-
-<header>
+<nav><div class="w"><b>Desmond Goto</b><div><a href="#experience">Experience</a><a href="#research">Research</a><a href="#writing">Writing</a><a href="#beyond">Beyond the desk</a><a href="#contact">Contact</a></div></div></nav>
+<main class="w">
+<header class="hero">
+<div class="rv">
+<p class="eyebrow">Chicago · College of the Holy Cross ’26</p>
 <h1>Desmond McDonagh Goto</h1>
-<p class="tag">Markets, macro &amp; geopolitics · Chicago</p>
-<p class="lead">I work where capital markets, global macroeconomics, and international politics meet. My background spans commercial real estate credit and EU regulatory research, and I write independently on geopolitics and macro.</p>
+<p class="pitch">I’m drawn to the point where <em>capital markets</em>, <em>global macro</em>, and <em>geopolitics</em> collide.</p>
+<p class="sub">My background spans commercial real estate credit and EU regulatory research, and I write independently on geopolitics and macro.</p>
+<div class="btns"><a class="btn p" href="#research">Read my research</a><a class="btn s" href="https://substack.com/@desmondgoto">Substack</a><a class="btn s" href="https://www.linkedin.com/in/desmond-mcdonagh-goto-55007b211/">LinkedIn</a></div>
+</div>
+<div class="ph rv"><img src="photo.jpg" alt="Desmond Goto in Holy Cross graduation regalia"></div>
 </header>
-
-<section id="about">
-<h2>About</h2>
-<p>I graduated from the College of the Holy Cross in 2026 with a B.A. in International Studies, concentrating in International Political Economy and Europe. I hold dual U.S. and EU citizenship, am professionally proficient in French, and am building my Greek.</p>
-<p>I’m interested in roles that connect markets, macro, and policy.</p>
-</section>
+<div class="stats rv">
+<div class="stat"><b>300+</b><span>EU directives evaluated</span></div>
+<div class="stat"><b>$750K–$50M</b><span>CRE debt deals underwritten</span></div>
+<div class="stat"><b>84 pages</b><span>published EU regulatory report</span></div>
+<div class="stat"><b>FR · EL</b><span>French (professional), Greek</span></div>
+</div>
 
 <section id="experience">
-<h2>Experience</h2>
-<div class="item">
-<div class="row"><b>Policy &amp; Economic Analyst</b><span class="when">May 2025 – May 2026 · Athens, Greece</span></div>
-<p class="org">Center for Liberal Studies (KEFiM)</p>
-<ul>
-<li>Evaluated 300+ EU directives and their impact assessments against better-regulation standards: legal clarity, drafting quality, subsidiarity and proportionality, and policy coherence.</li>
-<li>Built an Excel-based scoring framework covering 50+ criteria per directive, using EUR-Lex and official EU databases to link regulatory design to costs for institutions and markets.</li>
-<li>Contributed to KEFiM’s <i>EU Regulatory Quality Index</i> (November 2025).</li>
-<li>Researched EU artificial intelligence policy relative to the U.S. and China, with emphasis on competitiveness, innovation, and economic strategy.</li>
-</ul>
-</div>
-<div class="item">
-<div class="row"><b>Junior Credit Analyst Intern</b><span class="when">Summer 2024 · Chicago, IL</span></div>
-<p class="org">American Street Capital</p>
-<ul>
-<li>Underwrote commercial real estate debt transactions ($750K to $50M), building Excel models to evaluate NOI, DSCR, LTV, borrower strength, and collateral quality.</li>
-<li>Researched Chicago’s multifamily housing market to support investment strategy.</li>
-<li>Sat in on client meetings and deal closing calls, working with executive management on transaction evaluation.</li>
-</ul>
+<h2 class="rv">Experience</h2>
+<div class="g2">
+<article class="card rv"><h3>Policy &amp; Economic Analyst</h3><p class="when">Center for Liberal Studies (KEFiM) · Athens · May 2025 – May 2026</p>
+<ul><li>Evaluated 300+ EU directives and impact assessments for legal clarity, drafting quality, subsidiarity and proportionality, and policy coherence.</li>
+<li>Built an Excel scoring framework with 50+ criteria per directive, using EUR-Lex and official EU databases to link regulatory design to costs for institutions and markets.</li>
+<li>Researched EU AI policy relative to the U.S. and China.</li></ul></article>
+<article class="card rv"><h3>Junior Credit Analyst Intern</h3><p class="when">American Street Capital · Chicago · Summer 2024</p>
+<ul><li>Underwrote commercial real estate debt transactions ($750K to $50M), modeling NOI, DSCR, LTV, borrower strength, and collateral quality in Excel.</li>
+<li>Researched Chicago’s multifamily market to support investment strategy.</li>
+<li>Sat in on client meetings and deal closing calls with executive management.</li></ul></article>
 </div>
 </section>
 
 <section id="research">
-<h2>Published research</h2>
-<div class="card">
-<h3>EU Regulatory Quality Index: Benchmarking EU legislation against regulatory quality standards</h3>
-<p>Centre for Liberal Studies – Markos Dragoumis (KEFiM), November 2025 · 84 pages · Contributing researcher</p>
-<p style="color:var(--text)">A data-driven benchmark of how well EU directives are written and made. The report pairs a statistical assessment of legal language and length with a composite index, the EU Regulatory Quality Index (EU-RQI), that scores directives from 2022 to 2024 on initiative, subsidiarity, drafting, impact assessment, consultation, and implementation. It closes with evidence-based recommendations for EU lawmakers.</p>
-<div class="stats">
-<div class="stat"><b>38.6</b><span>average words per sentence in EU directives, against a 20-word plain-English guideline</span></div>
-<div class="stat"><b>66.9</b><span>average EU-RQI score (0–100), with consultation (49.9) and implementation (47.4) weakest</span></div>
-<div class="stat"><b>6.6%</b><span>of directives were accompanied by a roadmap</span></div>
-<div class="stat"><b>44.3%</b><span>of directives were transposed by the deadline</span></div>
-</div>
-<p style="color:var(--text)"><b>Why it matters:</b> the report links longer, denser legal texts to lower trust and weaker implementation, and recommends concrete fixes: mandatory early planning, consistent impact-assessment coverage, stronger consultation, and drafting targets for shorter sentences.</p>
-<p style="color:var(--text)"><b>My role:</b> as a junior researcher, I worked on directive-level evaluation and Excel-based data tracking.</p>
-<a class="btn" href="EU-Regulatory-Quality-Index.pdf">Read the full report (PDF)</a>
+<h2 class="rv">Published research</h2>
+<div class="card rv g2" style="gap:32px">
+<div><h3>EU Regulatory Quality Index</h3><p class="when">Benchmarking EU legislation against regulatory quality standards · KEFiM · November 2025</p>
+<p>A data-driven benchmark of how well EU directives are written and made. It pairs a statistical assessment of legal language and length with a composite index (EU-RQI) scoring directives from 2022 to 2024 on initiative, subsidiarity, drafting, impact assessment, consultation, and implementation, and closes with recommendations for EU lawmakers.</p>
+<p><b>My role:</b> junior researcher, working on directive-level evaluation and Excel-based data tracking.</p>
+<a class="btn p" href="EU-Regulatory-Quality-Index.pdf">Read the full report (PDF)</a></div>
+<div><div class="mini"><div><b>38.6</b><span>average words per sentence, against a 20-word plain-English guideline</span></div><div><b>66.9</b><span>average EU-RQI score (0–100); consultation and implementation weakest</span></div><div><b>6.6%</b><span>of directives came with a roadmap</span></div><div><b>44.3%</b><span>of directives were transposed on time</span></div></div></div>
 </div>
 </section>
 
 <section id="writing">
-<h2>Writing</h2>
-<div class="card">
-<h3>Independent Substack</h3>
-<p>Analysis and opinion on geopolitics, macroeconomics, global events, and markets.</p>
-<a class="btn" href="https://substack.com/@desmondgoto">Read on Substack</a>
+<h2 class="rv">Writing</h2>
+<div class="g2">
+<article class="card post rv"><p class="when" id="pd">Latest on Substack</p><p class="t" id="pt"><a href="https://substack.com/@desmondgoto">Analysis on geopolitics, macro, and markets</a></p><p id="px">Independent analysis on geopolitics, macroeconomics, global events, and markets.</p><a class="btn s" id="pl" href="https://substack.com/@desmondgoto">Read on Substack</a></article>
+<article class="card rv"><h3>Education &amp; skills</h3><p class="when">College of the Holy Cross · B.A. International Studies, 2026 · Dean’s List senior year</p>
+<div class="grp">Research &amp; analysis</div><ul class="chips"><li>Quantitative policy analysis</li><li>Composite index methodology</li><li>Impact-assessment evaluation</li><li>EU regulatory analysis</li><li>Policy writing</li></ul>
+<div class="grp">Data &amp; modeling</div><ul class="chips"><li>Advanced Excel</li><li>Structured data tracking</li><li>EUR-Lex</li><li>Credit underwriting</li><li>Market research</li></ul></article>
 </div>
 </section>
 
-<section id="education">
-<h2>Education &amp; skills</h2>
-<div class="item">
-<div class="row"><b>College of the Holy Cross</b><span class="when">B.A., May 2026</span></div>
-<p class="org">International Studies · Concentrations in International Political Economy and Europe</p>
+<section id="beyond">
+<h2 class="rv">Beyond the desk</h2>
+<div class="beyond">
+<figure class="rv" style="margin:0"><img src="rugby.jpg" alt="Holy Cross rugby team with a trophy and a National Collegiate Rugby banner"><figcaption class="cap">With Holy Cross Rugby</figcaption></figure>
+<div class="rv"><h3 style="font-size:1.5rem;line-height:1.25;margin:0 0 12px">Rugby taught me how to work in a team.</h3>
+<p>I’ve competed at the national championships twice, finishing second in 2024 and third in 2025, and I was named an Academic All-American. I also help lead the Holy Cross Rugby Football Club.</p></div>
 </div>
-<div class="grp">Research &amp; analysis</div>
-<ul class="chips"><li>Quantitative policy analysis</li><li>Composite index methodology</li><li>Impact-assessment evaluation</li><li>EU regulatory analysis</li><li>Policy writing</li><li>Macro research</li></ul>
-<div class="grp">Data &amp; modeling</div>
-<ul class="chips"><li>Advanced Excel</li><li>Structured data tracking</li><li>EUR-Lex &amp; official databases</li><li>Credit underwriting (NOI, DSCR, LTV)</li><li>Market research</li></ul>
-<div class="grp">Languages</div>
-<ul class="chips"><li>French (professional)</li><li>Greek (basic)</li></ul>
+<h3 class="rv" style="margin:40px 0 0;font-size:1.3rem">Here is what else I do</h3>
+<div class="fun">
+<div class="card rv"><h3>Staying active</h3><p>I run and lift as a regular part of my week, and I just finished my first marathon, in Chicago.</p></div>
+<div class="card rv"><h3>Food</h3><p>I love international food, and Egyptian is my favorite right now.</p></div>
+<div class="card rv"><h3>Music</h3><p>I listen to a lot of house and bossa nova.</p></div>
+<div class="card rv"><h3>Sports</h3><p>Chicago sports fan, and a soccer fan of Southampton and Olympiacos.</p></div>
+</div>
 </section>
-
 <section id="contact">
-<h2>Contact</h2>
-<p><a href="https://www.linkedin.com/in/desmond-mcdonagh-goto-55007b211/">LinkedIn</a> · <a href="https://substack.com/@desmondgoto">Substack</a> · <a href="mailto:gotodesmond@gmail.com">gotodesmond@gmail.com</a></p>
-</section>
-
-<footer>© 2026 Desmond McDonagh Goto</footer>
+<h2 class="rv">Contact</h2>
+<div class="card rv" style="text-align:center;padding:40px 24px">
+<h3 style="font-size:1.5rem;margin-bottom:10px">Let’s talk</h3>
+<p style="max-width:520px;margin:0 auto 22px;color:var(--muted)">Interested in markets, macro, or policy roles, or just want to talk geopolitics? I’d be glad to hear from you.</p>
+<div class="btns" style="justify-content:center"><a class="btn p" href="mailto:gotodesmond@gmail.com">Email me</a><a class="btn s" href="https://www.linkedin.com/in/desmond-mcdonagh-goto-55007b211/">LinkedIn</a><a class="btn s" href="https://substack.com/@desmondgoto">Substack</a></div>
 </div>
+</section>
+</main>
+<footer><div class="w"><span>© 2026 Desmond McDonagh Goto</span><span><a href="https://www.linkedin.com/in/desmond-mcdonagh-goto-55007b211/">LinkedIn</a> · <a href="https://substack.com/@desmondgoto">Substack</a> · <a href="mailto:gotodesmond@gmail.com">gotodesmond@gmail.com</a></span></div></footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});
+(async()=>{try{
+const feed='https://desmondgoto.substack.com/feed';
+const r=await fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(feed));
+const it=(await r.json()).items[0];if(!it)return;
+const txt=new DOMParser().parseFromString(it.description||'','text/html').body.textContent.trim();
+const a=document.createElement('a');a.href=it.link;a.textContent=it.title;
+const t=document.getElementById('pt');t.textContent='';t.appendChild(a);
+document.getElementById('pd').textContent='Latest on Substack · '+new Date(it.pubDate.replace(' ','T')+'Z').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+document.getElementById('px').textContent=txt.length>200?txt.slice(0,200).replace(/\s+\S*$/,'')+'…':txt;
+document.getElementById('pl').href=it.link;document.getElementById('pl').textContent='Read the post';
+}catch(e){}})();
+</script>
 </body>
 </html>
