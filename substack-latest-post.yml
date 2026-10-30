@@ -1,0 +1,33 @@
+name: Update latest Substack post
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch latest post
+        run: |
+          python3 - <<'PY'
+          import urllib.request, xml.etree.ElementTree as ET, json, re, html, email.utils, datetime
+          req = urllib.request.Request("https://desmondgoto.substack.com/feed", headers={"User-Agent": "Mozilla/5.0"})
+          root = ET.fromstring(urllib.request.urlopen(req, timeout=30).read())
+          item = root.find("./channel/item")
+          if item is not None:
+              desc = html.unescape(re.sub(r"<[^>]+>", " ", item.findtext("description") or ""))
+              desc = " ".join(desc.split())
+              if len(desc) > 200:
+                  desc = desc[:200].rsplit(" ", 1)[0] + "..."
+              date = email.utils.parsedate_to_datetime(item.findtext("pubDate")).astimezone(datetime.timezone.utc).isoformat()
+              json.dump({"title": item.findtext("title"), "link": item.findtext("link"), "date": date, "excerpt": desc}, open("latest-post.json", "w"), indent=2)
+          PY
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add latest-post.json || true
+          git diff --cached --quiet || (git commit -m "Update latest Substack post" && git push)
