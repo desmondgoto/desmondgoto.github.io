@@ -27,13 +27,15 @@ nav .w{display:flex;justify-content:space-between;align-items:center;height:60px
 nav b{font-size:16px;letter-spacing:.02em}
 nav div{display:flex;gap:22px;flex-wrap:wrap}
 nav a{color:var(--muted);text-decoration:none;transition:color .2s}nav a:hover{color:var(--accent)}
-.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center;padding:72px 0 56px}
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:center;padding:72px 0 56px}
 .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 16px}
 h1{font-size:clamp(2.4rem,5vw,3.6rem);line-height:1.08;margin:0 0 18px;letter-spacing:-.02em}
 .pitch{font-size:clamp(1.3rem,2.4vw,1.65rem);line-height:1.35;margin:0 0 16px}
 .pitch em{color:var(--accent)}
 .hero p.sub{color:var(--muted);margin:0 0 26px}
-.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.hero .btn{padding:10px 15px;font-size:14.5px;white-space:nowrap}
+@media (min-width:861px){.hero .btns{flex-wrap:nowrap}}
 .btn{display:inline-block;font-weight:600;font-size:15px;text-decoration:none;padding:11px 18px;border-radius:9px;border:1px solid var(--accent);transition:transform .2s,box-shadow .2s,background .2s}
 .btn.p{background:var(--accent);color:var(--bg)}.btn.s{color:var(--accent)}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px -8px var(--accent)}
@@ -161,15 +163,19 @@ footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <script>
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});
-(async()=>{try{
-const r=await fetch('latest-post.json',{cache:'no-cache'});if(!r.ok)return;
-const it=await r.json();if(!it.title||!it.link)return;
+(async()=>{
+const show=it=>{if(!it||!it.title||!it.link)return false;
 const a=document.createElement('a');a.href=it.link;a.textContent=it.title;
 const t=document.getElementById('pt');t.textContent='';t.appendChild(a);
-if(it.date)document.getElementById('pd').textContent='Latest on Substack · '+new Date(it.date).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+if(it.date){const d=new Date(it.date);if(!isNaN(d))document.getElementById('pd').textContent='Latest on Substack · '+d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}
 if(it.excerpt)document.getElementById('px').textContent=it.excerpt;
-document.getElementById('pl').href=it.link;document.getElementById('pl').textContent='Read the post';
-}catch(e){}})();
+document.getElementById('pl').href=it.link;document.getElementById('pl').textContent='Read the post';return true};
+try{const r=await fetch('latest-post.json',{cache:'no-cache'});if(r.ok&&show(await r.json()))return}catch(e){}
+try{const r=await fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent('https://desmondgoto.substack.com/feed'));
+const it=((await r.json()).items||[])[0];if(!it)return;
+const txt=new DOMParser().parseFromString(it.description||'','text/html').body.textContent.trim();
+show({title:it.title,link:it.link,date:it.pubDate&&it.pubDate.replace(' ','T')+'Z',excerpt:txt.length>200?txt.slice(0,200).replace(/\s+\S*$/,'')+'…':txt})}catch(e){}
+})();
 </script>
 </body>
 </html>
