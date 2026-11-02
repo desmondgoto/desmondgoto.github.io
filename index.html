@@ -26,7 +26,8 @@ nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color
 nav .w{display:flex;justify-content:space-between;align-items:center;height:60px}
 nav b{font-size:16px;letter-spacing:.02em}
 nav div{display:flex;gap:22px;flex-wrap:wrap}
-nav a{color:var(--muted);text-decoration:none;transition:color .2s}nav a:hover{color:var(--accent)}
+nav a{color:var(--muted);text-decoration:none;transition:color .2s}
+nav div{align-items:center}nav a:hover{color:var(--accent)}
 .hero{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:center;padding:72px 0 56px}
 .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 16px}
 h1{font-size:clamp(2.4rem,5vw,3.6rem);line-height:1.08;margin:0 0 18px;letter-spacing:-.02em}
@@ -69,6 +70,21 @@ h2::after{content:"";flex:1;height:1px;background:var(--line)}
 .cap{font:13px system-ui,-apple-system,sans-serif;color:var(--muted);margin:8px 0 0}
 .fun{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
 .fun .card{padding:20px}.fun h3{font-size:1rem}.fun p{font-size:14.5px;color:var(--muted);margin:0}
+.card ul.chips{padding-left:0}
+.course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.course{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.course h4{margin:0 0 10px;font:600 14px system-ui,-apple-system,sans-serif;color:var(--accent)}
+.course .chips li{background:var(--surface)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.skills-grid .card{padding:22px}.skills-grid .card h3{font-size:1.02rem;margin-bottom:12px}
+.share{font:600 14px system-ui,-apple-system,sans-serif;display:inline-flex;align-items:center;gap:7px;cursor:pointer;color:var(--accent);background:transparent;border:1px solid var(--accent);padding:7px 13px;border-radius:99px;transition:background .2s,color .2s,transform .2s}
+.share:hover{background:var(--accent2);transform:translateY(-1px)}
+.share.done{background:var(--accent);color:var(--bg)}
+.share svg{width:15px;height:15px;flex:none}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--text);color:var(--bg);font:500 14.5px system-ui,-apple-system,sans-serif;padding:12px 18px;border-radius:12px;box-shadow:0 12px 30px -10px rgba(0,0,0,.5);transition:opacity .25s,transform .25s;z-index:40;max-width:calc(100vw - 32px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (max-width:860px){.course-grid,.skills-grid{grid-template-columns:1fr}nav .share span.lbl-long{display:none}}
+@media (min-width:861px) and (max-width:1020px){.skills-grid{grid-template-columns:1fr 1fr}}
 footer{margin-top:90px;padding:28px 0 40px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
 footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .js .rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
@@ -78,7 +94,7 @@ footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </style>
 </head>
 <body>
-<nav><div class="w"><b>Desmond Goto</b><div><a href="#research">Research</a><a href="#experience">Experience</a><a href="#writing">Writing</a><a href="#beyond">Beyond the desk</a><a href="#contact">Contact</a></div></div></nav>
+<nav><div class="w"><b>Desmond Goto</b><div><a href="#research">Research</a><a href="#experience">Experience</a><a href="#writing">Writing</a><a href="#beyond">Beyond the desk</a><a href="#contact">Contact</a><button class="share" type="button" data-share aria-label="Share: copy this website's link to your clipboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><span class="lbl">Share</span><span class="lbl-long">: copy link</span></button></div></div></nav>
 <main class="w">
 <header class="hero">
 <div class="rv">
@@ -128,11 +144,26 @@ footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </section>
 
 <section id="education">
-<h2 class="rv">Education &amp; skills</h2>
-<div class="card rv"><h3>College of the Holy Cross</h3><p class="when">B.A. International Studies, 2026 · Dean’s List senior year · Academic All-American (rugby)</p>
-<div class="g2" style="gap:24px"><div><div class="grp">Research &amp; analysis</div><ul class="chips"><li>Quantitative policy analysis</li><li>Composite index methodology</li><li>Impact-assessment evaluation</li><li>EU regulatory analysis</li><li>Policy writing</li></ul></div>
-<div><div class="grp">Data &amp; modeling</div><ul class="chips"><li>Advanced Excel</li><li>Structured data tracking</li><li>EUR-Lex</li><li>Credit underwriting</li><li>Market research</li></ul></div></div>
-<div class="grp">Languages</div><ul class="chips"><li>English (native)</li><li>French (professional)</li><li>Greek (basic)</li></ul></div>
+<h2 class="rv">Education</h2>
+<div class="card rv"><h3>College of the Holy Cross</h3><p class="when">B.A. International Studies, May 2026 · Concentrations: International Political Economy &amp; Europe · Dean’s List senior year · Academic All-American (rugby)</p>
+<div class="grp">Relevant coursework</div>
+<div class="course-grid">
+<div class="course"><h4>Quantitative</h4><ul class="chips"><li>Calculus</li><li>Statistics</li></ul></div>
+<div class="course"><h4>Economics</h4><ul class="chips"><li>Principles of Economics</li></ul></div>
+<div class="course"><h4>Political &amp; international</h4><ul class="chips"><li>European Economics &amp; Politics</li><li>International Political Economy</li></ul></div>
+</div></div>
+</section>
+
+<section id="skills">
+<h2 class="rv">Skills</h2>
+<div class="skills-grid">
+<div class="card rv"><h3>Research &amp; policy analysis</h3><ul class="chips"><li>Quantitative policy analysis</li><li>Composite index methodology</li><li>Impact-assessment evaluation</li><li>EU regulatory analysis</li><li>Legal and regulatory text review</li><li>Geopolitical risk tracking</li><li>Policy paper drafting</li></ul></div>
+<div class="card rv"><h3>Economics &amp; markets</h3><ul class="chips"><li>Macroeconomics</li><li>International economics</li><li>Capital markets</li><li>Fixed income</li><li>FX</li><li>Equity research</li><li>Market research</li></ul></div>
+<div class="card rv"><h3>Credit &amp; finance</h3><ul class="chips"><li>Credit underwriting</li><li>NOI, DSCR &amp; LTV analysis</li><li>Financial modeling</li><li>Financial statement analysis</li><li>Rent roll &amp; comparables review</li></ul></div>
+<div class="card rv"><h3>Data &amp; tools</h3><ul class="chips"><li>Advanced Excel</li><li>Structured data tracking</li><li>Data verification</li><li>EUR-Lex &amp; official EU databases</li><li>PowerPoint &amp; Word</li><li>AI-assisted research workflows</li></ul></div>
+<div class="card rv"><h3>Communication &amp; leadership</h3><ul class="chips"><li>Independent writing</li><li>Investment pitching</li><li>Client-meeting exposure</li><li>Team logistics &amp; leadership</li></ul></div>
+<div class="card rv"><h3>Languages</h3><ul class="chips"><li>English (native)</li><li>French (professional)</li><li>Greek (basic)</li></ul></div>
+</div>
 </section>
 
 <section id="beyond">
@@ -156,8 +187,10 @@ footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <h3 style="font-size:1.5rem;margin-bottom:10px">Let’s talk</h3>
 <p style="max-width:520px;margin:0 auto 22px;color:var(--muted)">Interested in markets, macro, or policy roles, or just want to talk geopolitics? I’d be glad to hear from you.</p>
 <div class="btns" style="justify-content:center"><a class="btn p" href="mailto:gotodesmond@gmail.com">Email me</a><a class="btn s" href="Desmond-Goto-Resume.pdf" download>Résumé (PDF)</a><a class="btn s" href="https://www.linkedin.com/in/desmond-mcdonagh-goto-55007b211/">LinkedIn</a><a class="btn s" href="https://substack.com/@desmondgoto">Substack</a></div>
+<p style="margin:22px 0 0"><button class="share" type="button" data-share aria-label="Share: copy this website's link to your clipboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><span class="lbl">Share this site</span><span class="lbl-long">: copy link</span></button></p>
 </div>
 </section>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 </main>
 <footer><div class="w"><span>© 2026 Desmond McDonagh Goto</span><span><a href="https://www.linkedin.com/in/desmond-mcdonagh-goto-55007b211/">LinkedIn</a> · <a href="https://substack.com/@desmondgoto">Substack</a> · <a href="mailto:gotodesmond@gmail.com">gotodesmond@gmail.com</a></span></div></footer>
 <script>
@@ -176,6 +209,13 @@ const it=((await r.json()).items||[])[0];if(!it)return;
 const txt=new DOMParser().parseFromString(it.description||'','text/html').body.textContent.trim();
 show({title:it.title,link:it.link,date:it.pubDate&&it.pubDate.replace(' ','T')+'Z',excerpt:txt.length>200?txt.slice(0,200).replace(/\s+\S*$/,'')+'…':txt})}catch(e){}
 })();
+
+(()=>{const URL_='https://desmondgoto.github.io/';const toast=document.getElementById('toast');let tm;
+const say=(ok)=>{toast.textContent=ok?'Link copied to your clipboard. Paste it anywhere to share.':'Couldn’t copy automatically. Please copy the address from your browser bar.';toast.classList.add('show');clearTimeout(tm);tm=setTimeout(()=>toast.classList.remove('show'),3200)};
+const copy=async()=>{try{await navigator.clipboard.writeText(URL_);return true}catch(e){try{const i=document.createElement('input');i.value=URL_;i.setAttribute('readonly','');i.style.cssText='position:fixed;opacity:0';document.body.appendChild(i);i.select();const ok=document.execCommand('copy');i.remove();return ok}catch(e2){return false}}};
+document.querySelectorAll('[data-share]').forEach(b=>{const l=b.querySelector('.lbl'),L=b.querySelector('.lbl-long'),o=l.textContent,oL=L.textContent;
+b.addEventListener('click',async()=>{const ok=await copy();say(ok);if(!ok)return;b.classList.add('done');l.textContent='✓ Copied';L.textContent=' to clipboard';
+setTimeout(()=>{b.classList.remove('done');l.textContent=o;L.textContent=oL},2600)})})})();
 </script>
 </body>
 </html>
