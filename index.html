@@ -85,6 +85,12 @@ h2::after{content:"";flex:1;height:1px;background:var(--line)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 @media (max-width:860px){.course-grid,.skills-grid{grid-template-columns:1fr}nav .share span.lbl-long{display:none}}
 @media (min-width:861px) and (max-width:1020px){.skills-grid{grid-template-columns:1fr 1fr}}
+.course-grid{display:flex;flex-direction:column;gap:12px}
+.course{display:grid;grid-template-columns:180px 1fr;gap:6px 20px;align-items:center;padding:14px 20px}
+.course h4{margin:0}
+.edu-meta{margin:0 0 4px}
+@media (max-width:700px){.course{grid-template-columns:1fr}}
+@media (max-width:860px){nav .w{height:auto;min-height:56px;padding-top:8px;padding-bottom:8px}nav div{row-gap:6px}html{scroll-padding-top:110px}}
 footer{margin-top:90px;padding:28px 0 40px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
 footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .js .rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
@@ -94,7 +100,7 @@ footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </style>
 </head>
 <body>
-<nav><div class="w"><b>Desmond Goto</b><div><a href="#research">Research</a><a href="#experience">Experience</a><a href="#writing">Writing</a><a href="#beyond">Beyond the desk</a><a href="#contact">Contact</a><button class="share" type="button" data-share aria-label="Share: copy this website's link to your clipboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><span class="lbl">Share</span><span class="lbl-long">: copy link</span></button></div></div></nav>
+<nav><div class="w"><b>Desmond Goto</b><div><a href="#research">Research</a><a href="#experience">Experience</a><a href="#writing">Writing</a><a href="#beyond">Beyond the desk</a><a href="#contact">Contact</a><button class="share" type="button" data-share aria-label="Share: copy this website's link to your clipboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><span class="lbl-wrap"><span class="lbl">Share</span><span class="lbl-long">: copy link</span></span></button></div></div></nav>
 <main class="w">
 <header class="hero">
 <div class="rv">
@@ -157,7 +163,8 @@ footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <section id="education">
 <h2 class="rv">Education</h2>
-<div class="card rv"><h3>College of the Holy Cross</h3><p class="when">B.A. International Studies, May 2026 · Concentrations: International Political Economy &amp; Europe · Study abroad: College Year in Athens · Dean’s List senior year · Academic All-American (rugby)</p>
+<div class="card rv"><h3>College of the Holy Cross</h3><p class="when edu-meta">B.A. International Studies · May 2026 · Dean’s List senior year · Academic All-American (rugby)</p>
+<p class="when">Concentrations: International Political Economy &amp; Europe · Study abroad: College Year in Athens</p>
 <div class="grp">Relevant coursework</div>
 <div class="course-grid">
 <div class="course"><h4>Quantitative</h4><ul class="chips"><li>Calculus I</li><li>Calculus II</li><li>Statistics</li></ul></div>
@@ -199,7 +206,7 @@ footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <h3 style="font-size:1.5rem;margin-bottom:10px">Let’s talk</h3>
 <p style="max-width:520px;margin:0 auto 22px;color:var(--muted)">Interested in markets, macro, or policy roles, or just want to talk geopolitics? I’d be glad to hear from you.</p>
 <div class="btns" style="justify-content:center"><a class="btn p" href="mailto:gotodesmond@gmail.com">Email me</a><a class="btn s" href="Desmond-Goto-Resume.pdf" download>Résumé (PDF)</a><a class="btn s" href="https://www.linkedin.com/in/desmond-mcdonagh-goto-55007b211/">LinkedIn</a><a class="btn s" href="https://substack.com/@desmondgoto">Substack</a></div>
-<p style="margin:22px 0 0"><button class="share" type="button" data-share aria-label="Share: copy this website's link to your clipboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><span class="lbl">Share this site</span><span class="lbl-long">: copy link</span></button></p>
+<p style="margin:22px 0 0"><button class="share" type="button" data-share aria-label="Share: copy this website's link to your clipboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><span class="lbl-wrap"><span class="lbl">Share this site</span><span class="lbl-long">: copy link</span></span></button></p>
 </div>
 </section>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
